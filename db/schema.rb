@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_061719) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.text "iamge"
+    t.text "image"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_blogs_on_user_id"
   end
