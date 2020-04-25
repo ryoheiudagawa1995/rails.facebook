@@ -42,6 +42,7 @@ class BlogsController < ApplicationController
   end
   def confirm
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     return if @blog.valid?
     render :new
   end
