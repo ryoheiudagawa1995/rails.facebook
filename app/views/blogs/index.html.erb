@@ -4,6 +4,7 @@
         <p>タイトル:<%= blog.title %></p>
         <p><%= blog.content %></p>
         <%= image_tag(blog.image.url) %>
+        <p><%= blog.user.name %></p>
         <br>
         <%= link_to '詳細', blog %>
         <%= link_to '編集', edit_blog_path(blog) %>
