@@ -8,5 +8,5 @@
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit  "登録する" %>
-  <%= form.submit  "戻る", name: 'back '%>
+  <%= form.submit  "戻る", name: 'back'%>
 <% end %>

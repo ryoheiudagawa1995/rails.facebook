@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
   <div class="headbook">
     <% @blogs.each do |blog| %>
       <article class="blog">
@@ -6,16 +5,9 @@
         <p><%= blog.content %></p>
         <%= image_tag(blog.image.url) %>
         <br>
-        <%= link_to 'Show', blog %>
-        <%= link_to 'Edit', edit_blog_path(blog) %>
-        <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to '詳細', blog %>
+        <%= link_to '編集', edit_blog_path(blog) %>
+        <%= link_to '削除', blog, method: :delete, data: { confirm: '本当に削除していいですか' } %>
       </article>
     <% end %>
   </div>
-
-
-<footer>
-  <div class="footer">
-  <%= link_to 'New Blog', new_blog_path %>
-  </div>
-</footer>

@@ -13,14 +13,13 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-
-    respond_to do |format|
+    if params[:back]
+      render :new
+    else
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
-        format.json { render :show, status: :created, location: @blog }
+        redirect_to @blog, notice: '新規投稿しました'
       else
-        format.html { render :new }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
@@ -28,23 +27,23 @@ class BlogsController < ApplicationController
   def update
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
-        format.json { render :show, status: :ok, location: @blog }
+        format.html { redirect_to @blog, notice: '編集しました' }
       else
         format.html { render :edit }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to blogs_url, notice: '削除しました' }
       format.json { head :no_content }
     end
   end
   def confirm
     @blog = Blog.new(blog_params)
+    return if @blog.valid?
+    render :new
   end
   private
   def set_blog

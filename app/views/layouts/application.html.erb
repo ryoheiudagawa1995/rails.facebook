@@ -11,9 +11,6 @@
 
   <header>
     <h2>Headbook</h2>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
     <% if logged_in? %>
       <%= link_to "Profile", user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
@@ -21,8 +18,14 @@
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>
     <% end %>
+    <%= link_to 'New Blog', new_blog_path %>
   </header>
   <body>
     <%= yield %>
   </body>
 </html>
+<footer>
+  <div class="footer">
+  ©️headbook
+  </div>
+</footer>
